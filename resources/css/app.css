@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* ---- Design tokens: strict 60-30-10 ---- */
+@theme {
+  --font-sans: 'Geist', 'Readex Pro', ui-sans-serif, system-ui, sans-serif;
+
+  /* 60% primary surfaces */
+  --color-page: #F8FAFC;
+  --color-surface: #FFFFFF;
+  /* 30% structure */
+  --color-ink: #0F172A;
+  --color-muted: #64748B;
+  --color-line: #E2E8F0;
+  /* 10% accent */
+  --color-accent: #2563EB;
+  --color-accent-dark: #1D4ED8;
+  --color-accent-soft: #EFF6FF;
+}
+
+html[lang='ar'] body { font-family: 'Readex Pro', 'Geist', ui-sans-serif, system-ui, sans-serif; }
+body { background: var(--color-page); color: var(--color-ink); }
+.num, .tbl td.n, .tbl th.n { font-variant-numeric: tabular-nums; }
+.n { text-align: end; }
+
+@layer components {
+  .card { @apply bg-white border border-line rounded-md; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded px-3 py-2 text-sm font-medium border border-line bg-white text-ink hover:bg-page focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 cursor-pointer; }
+  .btn-primary { @apply bg-accent border-accent text-white hover:bg-accent-dark hover:border-accent-dark; }
+  .btn-danger { @apply border-red-200 text-red-700 hover:bg-red-50; }
+  .btn-sm { @apply px-2 py-1 text-xs; }
+  .input { @apply block w-full rounded border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none; }
+  .lbl { @apply block text-xs font-medium text-muted mb-1; }
+  .tbl { @apply w-full text-sm; }
+  .tbl th { @apply text-start text-xs font-semibold text-muted px-3 py-2 border-b border-line bg-page whitespace-nowrap; }
+  .tbl td { @apply px-3 py-2 border-b border-line align-middle; }
+  .tbl tbody tr:hover { @apply bg-accent-soft; }
+  .badge { @apply inline-flex items-center rounded px-2 py-0.5 text-xs font-medium border; }
+  .b-green { @apply bg-green-50 text-green-700 border-green-200; }
+  .b-amber { @apply bg-amber-50 text-amber-700 border-amber-200; }
+  .b-red { @apply bg-red-50 text-red-700 border-red-200; }
+  .b-blue { @apply bg-blue-50 text-blue-700 border-blue-200; }
+  .b-gray { @apply bg-slate-100 text-slate-600 border-slate-200; }
+  .navlink { @apply flex items-center gap-3 px-3 py-2 rounded text-sm text-slate-300 hover:text-white hover:bg-white/10; }
+  .navlink.active { @apply bg-accent-soft text-accent-dark font-semibold hover:bg-accent-soft hover:text-accent-dark; }
+}
+
+/* ---- Printing: only .print-area is visible ---- */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; inset-inline-start: 0; top: 0; width: 100%; }
+  .print-root { position: static !important; }
+  .modal-scroll { overflow: visible !important; max-height: none !important; }
+  .no-print { display: none !important; }
+  body { background: #fff; }
+}
+.thermal { width: 80mm; font-size: 11px; }
+.thermal table { width: 100%; }

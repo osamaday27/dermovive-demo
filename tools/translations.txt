@@ -1,0 +1,357 @@
+app.name|Dermovive Pharma|Dermovive Pharma|ديرموفيف فارما
+app.tagline|Sales & Financial Management|Gestion des ventes et finances|إدارة المبيعات والمالية
+nav.dashboard|Dashboard|Tableau de bord|لوحة التحكم
+nav.customers|Customers|Clients|العملاء
+nav.inventory|Inventory|Inventaire|المخزون
+nav.pos|POS & Billing|Caisse & Facturation|نقطة البيع والفواتير
+nav.invoices|Invoices|Factures|الفواتير
+nav.statements|Account Statements|Relevés de compte|كشوف الحساب
+nav.collections|Collections|Encaissements|التحصيلات
+nav.treasury|Treasury|Trésorerie|الخزينة
+nav.reports|Reports|Rapports|التقارير
+nav.logout|Sign out|Déconnexion|تسجيل الخروج
+auth.title|Sign in|Connexion|تسجيل الدخول
+auth.headline|Sales, stock and cash — one clear picture.|Ventes, stock et trésorerie — une vue claire.|المبيعات والمخزون والنقدية — في صورة واحدة واضحة.
+auth.sub|Distribution of skincare, dermatology, haircare and health products.|Distribution de produits de soins, dermatologie, capillaires et santé.|توزيع منتجات العناية بالبشرة والجلدية والشعر والصحة.
+auth.password|Password|Mot de passe|كلمة المرور
+auth.remember|Remember me|Se souvenir de moi|تذكرني
+auth.submit|Sign in|Se connecter|دخول
+auth.failed|These credentials do not match our records.|Ces identifiants ne correspondent pas.|بيانات الدخول غير صحيحة.
+auth.throttle|Too many attempts. Try again in :seconds seconds.|Trop de tentatives. Réessayez dans :seconds secondes.|محاولات كثيرة. حاول بعد :seconds ثانية.
+auth.demo_creds|Demo credentials (local only)|Identifiants de démo (local uniquement)|بيانات الدخول التجريبية (محلي فقط)
+common.save|Save|Enregistrer|حفظ
+common.cancel|Cancel|Annuler|إلغاء
+common.edit|Edit|Modifier|تعديل
+common.view|View|Voir|عرض
+common.archive|Archive|Archiver|أرشفة
+common.restore|Restore|Restaurer|استعادة
+common.close|Close|Fermer|إغلاق
+common.back|Back|Retour|رجوع
+common.print|Print|Imprimer|طباعة
+common.export_csv|Export CSV|Exporter CSV|تصدير CSV
+common.remove|Remove|Retirer|حذف
+common.confirm|Are you sure?|Êtes-vous sûr ?|هل أنت متأكد؟
+common.all|All|Tous|الكل
+common.name|Name|Nom|الاسم
+common.code|Code|Code|الكود
+common.phone|Phone|Téléphone|الهاتف
+common.email|Email|E-mail|البريد الإلكتروني
+common.address|Address|Adresse|العنوان
+common.notes|Notes|Notes|ملاحظات
+common.status|Status|Statut|الحالة
+common.active|Active|Actif|نشط
+common.archived|Archived|Archivé|مؤرشف
+common.date|Date|Date|التاريخ
+common.from|From|Du|من
+common.to|To|Au|إلى
+common.total|Total|Total|الإجمالي
+common.amount|Amount|Montant|المبلغ
+common.balance|Balance|Solde|الرصيد
+common.type|Type|Type|النوع
+common.method|Method|Méthode|الطريقة
+common.description|Description|Description|الوصف
+common.no_data|No records found.|Aucun enregistrement.|لا توجد بيانات.
+common.page|Page|Page|صفحة
+common.records|records|enregistrements|سجل
+common.prev|Previous|Précédent|السابق
+common.next|Next|Suivant|التالي
+common.days|days|jours|يوم
+common.currency|EGP|EGP|ج.م
+dash.today_sales|Today's sales|Ventes du jour|مبيعات اليوم
+dash.month_sales|This month's sales|Ventes du mois|مبيعات الشهر
+dash.receivables|Total receivables|Total créances|إجمالي المستحقات
+dash.treasury_balance|Treasury balance|Solde de trésorerie|رصيد الخزينة
+dash.low_stock|Low stock|Stock faible|مخزون منخفض
+dash.near_expiry|Near expiry (≤90d)|Proche péremption (≤90j)|قريب الانتهاء (≤٩٠ يوم)
+dash.expired|Expired batches|Lots périmés|دفعات منتهية
+dash.stock_value|Stock valuation|Valeur du stock|قيمة المخزون
+dash.sales_14|Sales — last 14 days|Ventes — 14 derniers jours|المبيعات — آخر ١٤ يوم
+dash.top_products|Top products (30 days)|Top produits (30 jours)|الأكثر مبيعاً (٣٠ يوم)
+dash.recent|Recent invoices|Factures récentes|أحدث الفواتير
+dash.invoices|invoices|factures|فاتورة
+dash.debtors|customers with debt|clients débiteurs|عميل مدين
+cust.new|New customer|Nouveau client|عميل جديد
+cust.edit|Edit customer|Modifier le client|تعديل عميل
+cust.saved|Customer saved.|Client enregistré.|تم حفظ العميل.
+cust.archived_msg|Customer archived.|Client archivé.|تمت أرشفة العميل.
+cust.restored_msg|Customer restored.|Client restauré.|تمت استعادة العميل.
+cust.total|Total customers|Total clients|إجمالي العملاء
+cust.active|Active customers|Clients actifs|العملاء النشطون
+cust.with_balance|With outstanding balance|Avec solde dû|عملاء بأرصدة مستحقة
+cust.search_ph|Search name, code or phone…|Rechercher nom, code ou téléphone…|بحث بالاسم أو الكود أو الهاتف…
+cust.category|Category|Catégorie|التصنيف
+cust.tax_id|Tax ID|N° fiscal|الرقم الضريبي
+cust.credit_limit|Credit limit|Limite de crédit|حد الائتمان
+cust.opening_balance|Opening balance|Solde d'ouverture|الرصيد الافتتاحي
+cust.terms|Payment terms (days)|Délai de paiement (jours)|شروط السداد (أيام)
+cust.invoices|Invoices|Factures|الفواتير
+cust.collections|Collections|Encaissements|التحصيلات
+cust.open_statement|Open account statement|Ouvrir le relevé de compte|فتح كشف الحساب
+inv.new|New product|Nouveau produit|منتج جديد
+inv.edit|Edit product|Modifier le produit|تعديل منتج
+inv.saved|Product saved.|Produit enregistré.|تم حفظ المنتج.
+inv.batch_saved|Batch added.|Lot ajouté.|تمت إضافة الدفعة.
+inv.adjusted|Stock adjusted.|Stock ajusté.|تم تعديل المخزون.
+inv.total_products|Products|Produits|المنتجات
+inv.stock_value|Stock valuation|Valeur du stock|قيمة المخزون
+inv.search_ph|Search name, SKU or barcode…|Rechercher nom, SKU ou code-barres…|بحث بالاسم أو SKU أو الباركود…
+inv.sku|SKU|SKU|SKU
+inv.barcode|Barcode|Code-barres|الباركود
+inv.brand|Brand|Marque|العلامة التجارية
+inv.name_ar|Name (Arabic)|Nom (arabe)|الاسم (عربي)
+inv.name_en|Name (English)|Nom (anglais)|الاسم (إنجليزي)
+inv.name_fr|Name (French)|Nom (français)|الاسم (فرنسي)
+inv.category|Category|Catégorie|الفئة
+inv.unit|Unit|Unité|الوحدة
+inv.purchase_price|Purchase price|Prix d'achat|سعر الشراء
+inv.price|Selling price|Prix de vente|سعر البيع
+inv.vat|VAT %|TVA %|ضريبة %
+inv.min_stock|Min. stock|Stock min.|الحد الأدنى
+inv.stock|Stock|Stock|المخزون
+inv.low|Low|Faible|منخفض
+inv.expiry|Expiry|Péremption|الصلاحية
+inv.exp_expired|Expired|Périmé|منتهي
+inv.exp_critical|≤ 30 days (critical)|≤ 30 jours (critique)|≤ ٣٠ يوم (حرج)
+inv.exp_warning|31–90 days (warning)|31–90 jours (alerte)|٣١–٩٠ يوم (تحذير)
+inv.exp_near|Near expiry (≤ 90 days)|Proche (≤ 90 jours)|قريب الانتهاء (≤ ٩٠ يوم)
+inv.exp_valid|Valid (> 90 days)|Valide (> 90 jours)|صالح (> ٩٠ يوم)
+inv.stk_out|Out of stock|Rupture|نفد المخزون
+inv.stk_low|Low stock|Stock faible|مخزون منخفض
+inv.stk_ok|In stock|En stock|متوفر
+inv.label|Barcode label|Étiquette code-barres|ملصق الباركود
+inv.batches|Batches|Lots|الدفعات
+inv.add_batch|Add batch|Ajouter un lot|إضافة دفعة
+inv.batch_no|Batch / Lot no.|N° de lot|رقم الدفعة
+inv.mfg|Manufacturing date|Date de fabrication|تاريخ الإنتاج
+inv.exp_date|Expiry date|Date de péremption|تاريخ الانتهاء
+inv.unit_cost|Unit cost|Coût unitaire|تكلفة الوحدة
+inv.initial|Initial qty|Qté initiale|الكمية الأولية
+inv.available|Available|Disponible|المتاح
+inv.adjust|Adjust|Ajuster|تعديل
+inv.movements|Stock movement history|Historique des mouvements|سجل حركة المخزون
+inv.qty_in|In|Entrée|وارد
+inv.qty_out|Out|Sortie|صادر
+inv.balance_after|Balance|Solde|الرصيد
+inv.qty|Quantity|Quantité|الكمية
+inv.direction|Direction|Sens|الاتجاه
+inv.adj_in|Increase stock|Augmenter le stock|زيادة المخزون
+inv.adj_out|Decrease stock|Diminuer le stock|خفض المخزون
+inv.reason|Reason|Motif|السبب
+inv.opening_stock|Opening stock|Stock d'ouverture|رصيد افتتاحي
+pos.search_ph|Search or scan barcode / SKU (Enter)…|Rechercher ou scanner code-barres / SKU (Entrée)…|ابحث أو امسح الباركود / SKU (Enter)…
+pos.not_found|No product matches this code.|Aucun produit pour ce code.|لا يوجد منتج بهذا الكود.
+pos.exp|Exp|Péremp.|ينتهي
+pos.invoice_no|Invoice no.|N° de facture|رقم الفاتورة
+pos.customer|Customer|Client|العميل
+pos.select_customer|Select customer|Choisir le client|اختر العميل
+pos.auto_fefo|Auto (FEFO)|Auto (FEFO)|تلقائي (الأقرب انتهاءً)
+pos.disc|Disc.|Remise|خصم
+pos.qty|Qty|Qté|الكمية
+pos.empty|Add products from the catalogue.|Ajoutez des produits du catalogue.|أضف منتجات من الكتالوج.
+pos.invoice_discount|Invoice discount|Remise facture|خصم الفاتورة
+pos.payment_method|Payment method|Mode de paiement|طريقة الدفع
+pos.paid|Paid|Payé|المدفوع
+pos.blank_full|blank = full|vide = total|فارغ = كامل
+pos.subtotal|Subtotal|Sous-total|الإجمالي الفرعي
+pos.discount|Discount|Remise|الخصم
+pos.taxable|Taxable amount|Montant imposable|المبلغ الخاضع للضريبة
+pos.grand_total|Grand total|Total général|الإجمالي النهائي
+pos.remaining|Remaining|Reste à payer|المتبقي
+pos.over_limit|This sale exceeds the customer's credit limit.|Cette vente dépasse la limite de crédit du client.|هذه العملية تتجاوز حد ائتمان العميل.
+pos.override|Authorized override|Dérogation autorisée|تجاوز مصرّح به
+pos.clear|Clear|Vider|مسح
+pos.complete|Complete sale|Finaliser la vente|إتمام البيع
+pos.sale_completed|Sale completed: :no|Vente terminée : :no|تم البيع: :no
+invs.no|Invoice no.|N° facture|رقم الفاتورة
+invs.invoice|Invoice|Facture|فاتورة
+invs.search_ph|Search invoice no. or customer…|Rechercher facture ou client…|بحث برقم الفاتورة أو العميل…
+invs.payment_history|Payment history|Historique des paiements|سجل المدفوعات
+invs.customer_details|customer details|détails du client|بيانات العميل
+print.a4|A4 invoice|Facture A4|فاتورة A4
+print.thermal|Thermal receipt|Ticket thermique|إيصال حراري
+print.preview|Print preview|Aperçu avant impression|معاينة الطباعة
+print.logo|Logo|Logo|الشعار
+print.invoice|Sales invoice|Facture de vente|فاتورة مبيعات
+print.bill_to|Bill to|Facturé à|العميل
+print.thanks|Thank you for your business|Merci de votre confiance|شكراً لتعاملكم معنا
+stmt.opening|Opening balance|Solde d'ouverture|الرصيد الافتتاحي
+stmt.opening_entry|Opening balance|Solde d'ouverture|رصيد افتتاحي
+stmt.total_debit|Total debit|Total débit|إجمالي المدين
+stmt.total_credit|Total credit|Total crédit|إجمالي الدائن
+stmt.closing|Closing balance|Solde de clôture|الرصيد الختامي
+stmt.debit|Debit|Débit|مدين
+stmt.credit|Credit|Crédit|دائن
+stmt.running|Running balance|Solde cumulé|الرصيد التراكمي
+stmt.ref|Reference|Référence|المرجع
+stmt.pick|Select a customer to view the statement.|Sélectionnez un client pour voir le relevé.|اختر عميلاً لعرض كشف الحساب.
+stmt.details|Transaction details|Détails de l'opération|تفاصيل العملية
+stmt.reconciled|Matches the live balance|Conforme au solde réel|مطابق للرصيد الفعلي
+stmt.not_reconciled|Does not match live balance|Écart avec le solde réel|لا يطابق الرصيد الفعلي
+stmt.sales_invoice_desc|Sales invoice :no|Facture de vente :no|فاتورة مبيعات :no
+stmt.payment_desc|Payment on invoice :no|Paiement facture :no|دفعة على الفاتورة :no
+stmt.collection_desc|Collection receipt :no|Reçu d'encaissement :no|إيصال تحصيل :no
+coll.new|New collection|Nouvel encaissement|تحصيل جديد
+coll.current_balance|Current balance|Solde actuel|الرصيد الحالي
+coll.open_invoices|Outstanding invoices|Factures impayées|الفواتير المستحقة
+coll.auto|Auto-allocate (oldest first)|Affecter auto (plus anciennes)|توزيع تلقائي (الأقدم أولاً)
+coll.allocate|Allocate|Affecter|تخصيص
+coll.allocated|Allocated to invoices|Affecté aux factures|مخصص للفواتير
+coll.on_account|On account|Sur compte|على الحساب
+coll.no_open|No outstanding invoices.|Aucune facture impayée.|لا توجد فواتير مستحقة.
+coll.record|Record collection|Enregistrer l'encaissement|تسجيل التحصيل
+coll.saved|Receipt :no recorded.|Reçu :no enregistré.|تم تسجيل الإيصال :no
+coll.receipt_no|Receipt no.|N° reçu|رقم الإيصال
+coll.receipt|Payment receipt|Reçu de paiement|إيصال دفع
+coll.posted|Posted|Comptabilisé|مرحّل
+coll.applied_to|Applied to|Affecté à|مطبّق على
+treas.account|Treasury account|Compte de trésorerie|حساب الخزينة
+treas.cash_in|Cash in / Deposit|Entrée / Dépôt|إيداع / وارد
+treas.cash_out|Cash out / Expense|Sortie / Dépense|صرف / مصروف
+treas.transfer|Transfer|Transfert|تحويل
+treas.from_account|From account|Du compte|من حساب
+treas.to_account|To account|Vers le compte|إلى حساب
+treas.total_balance|Total balance|Solde total|إجمالي الرصيد
+treas.tx_no|Transaction no.|N° opération|رقم الحركة
+treas.inflow|Inflow|Entrée|وارد
+treas.outflow|Outflow|Sortie|صادر
+treas.inflows|Total inflows|Total entrées|إجمالي الوارد
+treas.outflows|Total outflows|Total sorties|إجمالي الصادر
+treas.opening_balance|Opening balance|Solde d'ouverture|رصيد افتتاحي
+treas.saved|Transaction recorded.|Opération enregistrée.|تم تسجيل الحركة.
+treas.reversed|Transaction reversed.|Opération annulée.|تم عكس الحركة.
+treas.reverse|Reverse|Contre-passer|عكس
+treas.reversed_badge|Reversed|Contre-passée|معكوسة
+treas.confirm_reverse|Create a reversal entry for this transaction?|Créer une écriture de contre-passation ?|إنشاء قيد عكسي لهذه الحركة؟
+treas.reversal_of|Reversal of :no|Contre-passation de :no|عكس الحركة :no
+treas.sale_payment_desc|Sale payment :no|Paiement vente :no|دفعة بيع :no
+treas.collection_desc|Collection :no — :customer|Encaissement :no — :customer|تحصيل :no — :customer
+rep.tab_sales|Sales|Ventes|المبيعات
+rep.tab_profit|Profit|Bénéfice|الأرباح
+rep.tab_inventory|Inventory|Inventaire|المخزون
+rep.tab_receivables|Receivables|Créances|مديونيات العملاء
+rep.tab_products|Top products|Top produits|الأكثر مبيعاً
+rep.tab_treasury|Treasury|Trésorerie|الخزينة
+rep.p_today|Today|Aujourd'hui|اليوم
+rep.p_week|This week|Cette semaine|هذا الأسبوع
+rep.p_month|This month|Ce mois|هذا الشهر
+rep.p_custom|Custom|Personnalisé|مخصص
+rep.total_sales|Total sales|Ventes totales|إجمالي المبيعات
+rep.net_sales|Net sales|Ventes nettes|صافي المبيعات
+rep.discounts|Total discounts|Total remises|إجمالي الخصومات
+rep.vat|VAT collected|TVA collectée|الضريبة المحصلة
+rep.invoices|Invoices|Factures|عدد الفواتير
+rep.average|Average invoice|Facture moyenne|متوسط الفاتورة
+rep.cogs|Cost of goods sold|Coût des marchandises vendues|تكلفة البضاعة المباعة
+rep.gross_profit|Gross profit|Marge brute|مجمل الربح
+rep.margin|Gross margin|Marge brute %|هامش الربح
+rep.cogs_note|Cost uses the historical batch cost recorded at the time of sale.|Le coût utilise le coût historique du lot au moment de la vente.|التكلفة محسوبة من تكلفة الدفعة التاريخية وقت البيع.
+rep.total_qty|Total stock qty|Quantité totale|إجمالي الكمية
+rep.outstanding|Outstanding balances|Soldes dus|إجمالي الأرصدة المستحقة
+rep.overdue|Overdue balances|Soldes en retard|أرصدة متأخرة
+rep.highest|Highest outstanding balances|Soldes les plus élevés|أعلى الأرصدة المستحقة
+rep.units|Units sold|Unités vendues|الوحدات المباعة
+rep.revenue|Revenue|Chiffre d'affaires|الإيرادات
+rep.expenses|Expenses|Dépenses|المصروفات
+errors.invalid_customer|Select a valid, active customer.|Sélectionnez un client actif valide.|اختر عميلاً نشطاً صالحاً.
+errors.empty_invoice|The invoice has no items.|La facture est vide.|الفاتورة لا تحتوي على أصناف.
+errors.invalid_product|Invalid product.|Produit invalide.|منتج غير صالح.
+errors.invalid_qty|Invalid quantity.|Quantité invalide.|كمية غير صالحة.
+errors.invalid_discount|Discount must be between 0 and 100.|La remise doit être entre 0 et 100.|الخصم يجب أن يكون بين 0 و100.
+errors.invalid_vat|VAT rate is not allowed.|Taux de TVA non autorisé.|نسبة الضريبة غير مسموحة.
+errors.invalid_amount|Invalid amount.|Montant invalide.|مبلغ غير صالح.
+errors.overpaid|Paid amount cannot exceed the invoice total.|Le montant payé dépasse le total.|المدفوع لا يمكن أن يتجاوز إجمالي الفاتورة.
+errors.credit_limit|Credit limit exceeded (limit :limit, projected balance :projected).|Limite de crédit dépassée (limite :limit, solde prévu :projected).|تم تجاوز حد الائتمان (الحد :limit، الرصيد المتوقع :projected).
+errors.invalid_account|Select a valid treasury account.|Sélectionnez un compte valide.|اختر حساب خزينة صالحاً.
+errors.batch_not_found|Batch not found for this product.|Lot introuvable pour ce produit.|الدفعة غير موجودة لهذا المنتج.
+errors.batch_expired|Batch :batch is expired and cannot be sold.|Le lot :batch est périmé et ne peut être vendu.|الدفعة :batch منتهية الصلاحية ولا يمكن بيعها.
+errors.only_expired|:product only has expired stock — it cannot be sold.|:product n'a que du stock périmé — vente impossible.|:product متوفر منه مخزون منتهي فقط — لا يمكن بيعه.
+errors.insufficient_stock|Insufficient stock for :product (available :available).|Stock insuffisant pour :product (disponible :available).|المخزون غير كافٍ للمنتج :product (المتاح :available).
+errors.negative_stock|This operation would make stock negative.|Cette opération rendrait le stock négatif.|هذه العملية ستجعل المخزون سالباً.
+errors.collection_exceeds|The collection cannot exceed the customer's outstanding balance.|L'encaissement dépasse le solde dû du client.|التحصيل لا يمكن أن يتجاوز رصيد العميل المستحق.
+errors.invalid_invoice|Invalid invoice for this customer.|Facture invalide pour ce client.|فاتورة غير صالحة لهذا العميل.
+errors.alloc_exceeds_invoice|Allocation exceeds the remaining amount of :no.|L'affectation dépasse le reste de :no.|التخصيص يتجاوز المتبقي من :no.
+errors.alloc_exceeds_amount|Allocations exceed the collection amount.|Les affectations dépassent le montant.|التخصيصات تتجاوز مبلغ التحصيل.
+errors.same_account|Choose two different accounts.|Choisissez deux comptes différents.|اختر حسابين مختلفين.
+errors.insufficient_treasury|Insufficient balance in :account.|Solde insuffisant dans :account.|الرصيد غير كافٍ في :account.
+errors.not_reversible|System-generated entries cannot be reversed here.|Les écritures système ne sont pas annulables ici.|الحركات الآلية لا يمكن عكسها من هنا.
+errors.already_reversed|This transaction was already reversed.|Cette opération est déjà annulée.|تم عكس هذه الحركة مسبقاً.
+enums.CustomerCategory.pharmacy|Pharmacy|Pharmacie|صيدلية
+enums.CustomerCategory.beauty_center|Beauty Center|Centre de beauté|مركز تجميل
+enums.CustomerCategory.wholesale|Wholesale|Grossiste|جملة
+enums.CustomerCategory.retail|Retail|Détail|تجزئة
+enums.CustomerCategory.distributor|Distributor|Distributeur|موزع
+enums.ProductUnit.box|Box|Boîte|علبة
+enums.ProductUnit.bottle|Bottle|Flacon|زجاجة
+enums.ProductUnit.tube|Tube|Tube|أنبوب
+enums.ProductUnit.carton|Carton|Carton|كرتونة
+enums.ProductUnit.piece|Piece|Pièce|قطعة
+enums.PaymentMethod.cash|Cash|Espèces|نقدي
+enums.PaymentMethod.card|Card|Carte|بطاقة
+enums.PaymentMethod.bank_transfer|Bank transfer|Virement|تحويل بنكي
+enums.PaymentMethod.credit|Credit / Deferred|Crédit / Différé|آجل
+enums.CollectionMethod.cash|Cash|Espèces|نقدي
+enums.CollectionMethod.bank_transfer|Bank transfer|Virement|تحويل بنكي
+enums.CollectionMethod.check|Check|Chèque|شيك
+enums.PaymentStatus.paid|Paid|Payée|مدفوعة
+enums.PaymentStatus.partial|Partially paid|Partiellement payée|مدفوعة جزئياً
+enums.PaymentStatus.unpaid|Unpaid|Impayée|غير مدفوعة
+enums.LedgerType.opening|Opening balance|Solde d'ouverture|رصيد افتتاحي
+enums.LedgerType.invoice|Sales invoice|Facture de vente|فاتورة مبيعات
+enums.LedgerType.invoice_payment|Invoice payment|Paiement facture|دفعة فاتورة
+enums.LedgerType.collection|Collection receipt|Reçu d'encaissement|إيصال تحصيل
+enums.LedgerType.adjustment|Manual adjustment|Ajustement manuel|تسوية يدوية
+enums.TreasuryTxType.opening|Opening balance|Solde d'ouverture|رصيد افتتاحي
+enums.TreasuryTxType.cash_in|Cash in|Entrée|وارد
+enums.TreasuryTxType.cash_out|Cash out|Sortie|صرف
+enums.TreasuryTxType.transfer_in|Transfer in|Transfert entrant|تحويل وارد
+enums.TreasuryTxType.transfer_out|Transfer out|Transfert sortant|تحويل صادر
+enums.TreasuryTxType.sale_payment|Sale payment|Paiement vente|دفعة مبيعات
+enums.TreasuryTxType.collection|Collection|Encaissement|تحصيل
+enums.TreasuryTxType.reversal|Reversal|Contre-passation|قيد عكسي
+enums.AccountType.cash|Cash|Espèces|نقدي
+enums.AccountType.bank|Bank|Banque|بنك
+enums.AccountType.wallet|E-wallet|Portefeuille|محفظة إلكترونية
+enums.StockMovementType.opening|Opening|Ouverture|افتتاحي
+enums.StockMovementType.sale|Sale|Vente|بيع
+enums.StockMovementType.adjustment_in|Adjustment (+)|Ajustement (+)|تسوية (+)
+enums.StockMovementType.adjustment_out|Adjustment (−)|Ajustement (−)|تسوية (−)
+enums.ExpiryStatus.expired|Expired|Périmé|منتهي
+enums.ExpiryStatus.critical|Expires ≤ 30 days|Expire ≤ 30 jours|ينتهي ≤ ٣٠ يوم
+enums.ExpiryStatus.warning|Expires ≤ 90 days|Expire ≤ 90 jours|ينتهي ≤ ٩٠ يوم
+enums.ExpiryStatus.valid|Valid|Valide|صالح
+f.name|Name|Nom|الاسم
+f.phone|Phone|Téléphone|الهاتف
+f.email|Email|E-mail|البريد الإلكتروني
+f.address|Address|Adresse|العنوان
+f.category|Category|Catégorie|التصنيف
+f.tax_id|Tax ID|N° fiscal|الرقم الضريبي
+f.credit_limit|Credit limit|Limite de crédit|حد الائتمان
+f.opening_balance|Opening balance|Solde d'ouverture|الرصيد الافتتاحي
+f.payment_terms_days|Payment terms|Délai de paiement|شروط السداد
+f.notes|Notes|Notes|ملاحظات
+f.sku|SKU|SKU|SKU
+f.barcode|Barcode|Code-barres|الباركود
+f.name_ar|Name (Arabic)|Nom (arabe)|الاسم (عربي)
+f.name_en|Name (English)|Nom (anglais)|الاسم (إنجليزي)
+f.name_fr|Name (French)|Nom (français)|الاسم (فرنسي)
+f.category_id|Category|Catégorie|الفئة
+f.brand|Brand|Marque|العلامة التجارية
+f.unit|Unit|Unité|الوحدة
+f.purchase_price|Purchase price|Prix d'achat|سعر الشراء
+f.selling_price|Selling price|Prix de vente|سعر البيع
+f.vat_rate|VAT rate|Taux de TVA|نسبة الضريبة
+f.min_stock|Minimum stock|Stock minimum|الحد الأدنى للمخزون
+f.status|Status|Statut|الحالة
+f.description|Description|Description|الوصف
+f.batch_no|Batch number|Numéro de lot|رقم الدفعة
+f.mfg_date|Manufacturing date|Date de fabrication|تاريخ الإنتاج
+f.expiry_date|Expiry date|Date de péremption|تاريخ الانتهاء
+f.unit_cost|Unit cost|Coût unitaire|تكلفة الوحدة
+f.qty|Quantity|Quantité|الكمية
+f.direction|Direction|Sens|الاتجاه
+f.note|Reason|Motif|السبب
+f.account_id|Account|Compte|الحساب
+f.to_account_id|Destination account|Compte destinataire|الحساب المستلم
+f.amount|Amount|Montant|المبلغ
+f.date|Date|Date|التاريخ
+f.reference|Reference|Référence|المرجع
