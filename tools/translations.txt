@@ -355,3 +355,12 @@ f.to_account_id|Destination account|Compte destinataire|الحساب المست�
 f.amount|Amount|Montant|المبلغ
 f.date|Date|Date|التاريخ
 f.reference|Reference|Référence|المرجع
+auth.welcome|Welcome back|Bon retour|أهلاً بعودتك
+auth.welcome_sub|Sign in to continue to your workspace.|Connectez-vous pour accéder à votre espace.|سجّل الدخول للمتابعة إلى لوحة عملك.
+auth.f1|Batch & expiry tracking (FEFO)|Suivi des lots et péremptions (FEFO)|تتبع الدفعات والصلاحية (FEFO)
+auth.f2|Fast POS & invoicing|Caisse et facturation rapides|نقطة بيع وفواتير سريعة
+auth.f3|Customer accounts & collections|Comptes clients et encaissements|حسابات العملاء والتحصيلات
+auth.f4|Treasury & executive reports|Trésorerie et rapports de direction|الخزينة وتقارير الإدارة
+auth.show|Show|Afficher|إظهار
+auth.hide|Hide|Masquer|إخفاء
+auth.secure|Secure session · encrypted connection|Session sécurisée · connexion chiffrée|جلسة آمنة · اتصال مشفّر
