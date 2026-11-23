@@ -19,7 +19,7 @@ return [
     ],
     'auth' => [
         'title' => 'Sign in',
-        'headline' => 'Sales, stock and cash — one clear picture.',
+        'headline' => 'Enterprise Resource Planning System',
         'sub' => 'Distribution of skincare, dermatology, haircare and health products.',
         'password' => 'Password',
         'remember' => 'Remember me',

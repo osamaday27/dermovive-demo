@@ -11,8 +11,8 @@ nav.treasury|Treasury|Trésorerie|الخزينة
 nav.reports|Reports|Rapports|التقارير
 nav.logout|Sign out|Déconnexion|تسجيل الخروج
 auth.title|Sign in|Connexion|تسجيل الدخول
-auth.headline|Sales, stock and cash — one clear picture.|Ventes, stock et trésorerie — une vue claire.|المبيعات والمخزون والنقدية — في صورة واحدة واضحة.
-auth.sub|Distribution of skincare, dermatology, haircare and health products.|Distribution de produits de soins, dermatologie, capillaires et santé.|توزيع منتجات العناية بالبشرة والجلدية والشعر والصحة.
+auth.headline|Enterprise Resource Planning System|Ventes, stock et trésorerie — une vue claire.|نظام تخطيط موارد المؤسسات
+auth.sub|Distribution of skincare, dermatology, haircare and health products.|Distribution de produits de soins, dermatologie, capillaires et santé.| للمنتجات العناية بالبشرة والجلدية والشعر والصحة..
 auth.password|Password|Mot de passe|كلمة المرور
 auth.remember|Remember me|Se souvenir de moi|تذكرني
 auth.submit|Sign in|Se connecter|دخول

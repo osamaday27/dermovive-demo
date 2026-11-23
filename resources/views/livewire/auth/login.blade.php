@@ -1,162 +1,958 @@
-<div class="login-root h-dvh lg:overflow-hidden grid lg:grid-cols-[1.1fr_1fr] bg-white">
+<div class="auth-shell" dir="ltr">
+
     <style>
-        .login-root { --teal: #1A3F3F; --teal-dark: #123030; --coral: #EE7782; --blush: #FDF1F2; --mint: #EAF2F0; }
-        .login-root .brand-serif { font-family: 'Playfair Display', Georgia, serif; }
-        [dir='rtl'] .login-root .brand-serif { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 600; }
-        .login-root .btn-brand { background: var(--teal); color: #fff; border-radius: 4px; }
-        .login-root .btn-brand:hover { background: var(--teal-dark); }
-        .login-root .input:focus { border-color: var(--teal); --tw-ring-color: var(--teal); }
-        @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-5px) } }
-        .login-root .floaty { animation: floaty 6s ease-in-out infinite; }
-        .login-root .floaty-2 { animation: floaty 7.5s ease-in-out infinite .8s; }
-        @media (prefers-reduced-motion: reduce) { .login-root .floaty, .login-root .floaty-2 { animation: none; } }
-        /* short screens: drop the illustration so nothing ever scrolls */
-        @media (max-height: 640px) { .login-root .hero-art { display: none; } }
+        /* ============================================================
+           AUTH SHELL — DESIGN TOKENS
+        ============================================================ */
+        .auth-shell {
+            --teal: #1A3F3F;
+            --teal-dark: #0F2828;
+            --teal-soft: #2A5A5A;
+            --coral: #EE7782;
+            --coral-dark: #D95F6B;
+            --blush: #FDF1F2;
+            --mint: #EAF2F0;
+            --ink: #0F172A;
+            --muted: #64748B;
+            --line: #E5E9EF;
+            --bg: #FFFFFF;
+
+            font-family: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        .auth-shell *,
+        .auth-shell *::before,
+        .auth-shell *::after {
+            box-sizing: border-box;
+        }
+
+        .auth-shell .serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            letter-spacing: -0.5px;
+        }
+
+        [dir="rtl"] .auth-shell .serif {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        /* ============================================================
+           LEFT — FORM PANEL
+        ============================================================ */
+        .auth-shell .form-panel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 56px;
+            overflow-y: auto;
+            background: #fff;
+        }
+
+        /* Top bar */
+        .auth-shell .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .auth-shell .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2.5px;
+            color: var(--teal);
+        }
+
+        .auth-shell .brand-mark::before {
+            content: "";
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 30%, var(--coral), var(--coral-dark));
+            box-shadow: 0 0 0 4px rgba(238,119,130,.12);
+        }
+
+        /* Language switcher */
+        .auth-shell .lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            padding: 4px;
+            background: #F8FAFC;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+        }
+
+        .auth-shell .lang a {
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 999px;
+            transition: all .2s ease;
+        }
+
+        .auth-shell .lang a:hover {
+            color: var(--teal);
+            background: #fff;
+        }
+
+        .auth-shell .lang a.active {
+            background: var(--teal);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(26,63,63,.25);
+        }
+
+        /* Center column */
+        .auth-shell .form-center {
+            margin: auto 0;
+            width: 100%;
+            max-width: 420px;
+            align-self: center;
+        }
+
+        /* Eyebrow */
+        .auth-shell .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--coral);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .auth-shell .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 2px;
+            background: var(--coral);
+        }
+
+        /* Heading */
+        .auth-shell .headline {
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--teal);
+            margin: 0 0 10px;
+            letter-spacing: -0.8px;
+        }
+
+        .auth-shell .subhead {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted);
+            margin: 0 0 32px;
+        }
+
+        /* Fields */
+        .auth-shell .field {
+            margin-bottom: 18px;
+        }
+
+        .auth-shell .field-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            letter-spacing: .2px;
+        }
+
+        .auth-shell .field-input {
+            width: 100%;
+            height: 50px;
+            padding: 0 16px;
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            background: #FCFDFE;
+            font-size: 14px;
+            color: var(--ink);
+            outline: none;
+            transition: all .2s ease;
+            font-family: inherit;
+        }
+
+        .auth-shell .field-input::placeholder {
+            color: #B4BECD;
+        }
+
+        .auth-shell .field-input:hover {
+            border-color: #CBD5E1;
+        }
+
+        .auth-shell .field-input:focus {
+            border-color: var(--teal);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26,63,63,.08);
+        }
+
+        .auth-shell .field-input.error {
+            border-color: var(--coral);
+            background: #FFF7F8;
+        }
+
+        .auth-shell .field-error {
+            font-size: 11.5px;
+            color: var(--coral-dark);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* Show/hide password */
+        .auth-shell .link-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--coral);
+            cursor: pointer;
+            transition: color .2s ease;
+            font-family: inherit;
+        }
+
+        .auth-shell .link-btn:hover {
+            color: var(--coral-dark);
+        }
+
+        /* Remember row */
+        .auth-shell .remember {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #475569;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 22px;
+        }
+
+        .auth-shell .remember input {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1.5px solid #CBD5E1;
+            accent-color: var(--teal);
+            cursor: pointer;
+        }
+
+        /* Submit */
+        .auth-shell .btn-submit {
+            width: 100%;
+            height: 52px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-soft) 100%);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all .25s ease;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-shell .btn-submit::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,.15) 100%);
+            opacity: 0;
+            transition: opacity .25s ease;
+        }
+
+        .auth-shell .btn-submit:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(26,63,63,.22);
+        }
+
+        .auth-shell .btn-submit:hover:not(:disabled)::after {
+            opacity: 1;
+        }
+
+        .auth-shell .btn-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .auth-shell .btn-submit:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+
+        /* Focus ring */
+        .auth-shell .field-input:focus-visible,
+        .auth-shell .btn-submit:focus-visible,
+        .auth-shell .lang a:focus-visible,
+        .auth-shell .link-btn:focus-visible,
+        .auth-shell .remember input:focus-visible {
+            outline: 2px solid var(--coral);
+            outline-offset: 2px;
+        }
+
+        /* Demo box */
+        .auth-shell .demo {
+            margin-top: 20px;
+            padding: 12px 14px;
+            background: var(--blush);
+            border: 1px solid rgba(238,119,130,.28);
+            border-radius: 10px;
+            font-size: 12px;
+            color: var(--teal);
+        }
+
+        .auth-shell .demo-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: .3px;
+        }
+
+        .auth-shell .demo-code {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 11.5px;
+            letter-spacing: .2px;
+        }
+
+        /* Footer */
+        .auth-shell .form-footer {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .auth-shell .secure {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        .auth-shell .secure svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .auth-shell .copyright {
+            font-size: 11px;
+            color: #B4BECD;
+            letter-spacing: .2px;
+        }
+
+        /* ============================================================
+           RIGHT — BRAND PANEL
+        ============================================================ */
+        .auth-shell .brand-panel {
+            position: relative;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(238,119,130,.10) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(26,63,63,.10) 0%, transparent 45%),
+                linear-gradient(135deg, #FDF1F2 0%, #FFFFFF 50%, #EAF2F0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+        }
+
+        /* Decorative blobs */
+        .auth-shell .brand-panel::before,
+        .auth-shell .brand-panel::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+
+        .auth-shell .brand-panel::before {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            background: rgba(238,119,130,.22);
+        }
+
+        .auth-shell .brand-panel::after {
+            width: 450px;
+            height: 450px;
+            bottom: -150px;
+            left: -130px;
+            background: rgba(26,63,63,.14);
+        }
+
+        /* Subtle grid overlay */
+        .auth-shell .brand-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,63,63,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,63,63,.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+            pointer-events: none;
+        }
+
+        /* Brand card */
+        .auth-shell .brand-card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 480px;
+            padding: 48px 40px;
+            background: rgba(255,255,255,.65);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 24px;
+            box-shadow:
+                0 20px 60px rgba(26,63,63,.08),
+                0 2px 8px rgba(26,63,63,.04);
+            text-align: center;
+            animation: brandFadeUp .8s ease both;
+        }
+
+        @keyframes brandFadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .auth-shell .brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 28px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow:
+                0 8px 24px rgba(26,63,63,.10),
+                0 0 0 6px rgba(238,119,130,.08);
+        }
+
+        .auth-shell .brand-logo {
+            max-width: 64px;
+            max-height: 64px;
+            object-fit: contain;
+        }
+
+        /* Accent divider */
+        .auth-shell .brand-divider {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .auth-shell .brand-divider span {
+            display: block;
+            height: 2px;
+            border-radius: 2px;
+        }
+
+        .auth-shell .brand-divider .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            height: 6px;
+        }
+
+        .auth-shell .brand-divider .line-coral {
+            width: 36px;
+            background: var(--coral);
+        }
+
+        .auth-shell .brand-divider .line-teal {
+            width: 36px;
+            background: var(--teal);
+        }
+
+        .auth-shell .brand-divider .dot-coral { background: var(--coral); }
+        .auth-shell .brand-divider .dot-teal  { background: var(--teal); }
+
+        /* Brand text */
+        .auth-shell .brand-title {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--teal);
+            margin: 0 0 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .auth-shell .brand-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #475569;
+            margin: 0;
+        }
+
+        /* Decorative footer strip */
+        .auth-shell .brand-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .auth-shell .brand-strip span {
+            display: block;
+            height: 1px;
+            width: 40px;
+            background: rgba(26,63,63,.2);
+        }
+
+        .auth-shell .brand-strip .badge {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--teal);
+            text-transform: uppercase;
+        }
+
+        /* Brand footer */
+        .auth-shell .brand-footer {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 11px;
+            color: #94A3B8;
+            letter-spacing: .3px;
+            z-index: 2;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1023px) {
+            .auth-shell {
+                grid-template-columns: 1fr;
+                overflow: visible;
+            }
+
+            .auth-shell .brand-panel {
+                order: -1;
+                min-height: 320px;
+                padding: 40px 24px;
+            }
+
+            .auth-shell .brand-card {
+                padding: 32px 24px;
+                border-radius: 20px;
+            }
+
+            .auth-shell .brand-logo-wrap {
+                width: 72px;
+                height: 72px;
+                margin-bottom: 20px;
+            }
+
+            .auth-shell .brand-logo {
+                max-width: 48px;
+                max-height: 48px;
+            }
+
+            .auth-shell .brand-title {
+                font-size: 21px;
+            }
+
+            .auth-shell .brand-desc {
+                font-size: 13px;
+            }
+
+            .auth-shell .brand-footer {
+                display: none;
+            }
+
+            .auth-shell .form-panel {
+                padding: 32px 24px;
+                min-height: auto;
+            }
+
+            .auth-shell .topbar {
+                margin-bottom: 32px;
+            }
+
+            .auth-shell .form-center {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-shell .form-panel {
+                padding: 24px 18px 32px;
+            }
+
+            .auth-shell .brand-panel {
+                min-height: 260px;
+                padding: 28px 16px;
+            }
+
+            .auth-shell .brand-card {
+                padding: 24px 18px;
+            }
+
+            .auth-shell .headline {
+                font-size: 26px;
+            }
+
+            .auth-shell .field-input,
+            .auth-shell .btn-submit {
+                height: 48px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .auth-shell *,
+            .auth-shell *::before,
+            .auth-shell *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
     </style>
 
-    {{-- ============ BRAND PANEL: logo is the focus ============ --}}
-    <section class="relative hidden lg:flex flex-col items-center justify-center overflow-hidden px-10 text-center"
-             style="background: linear-gradient(160deg, var(--blush) 0%, #fff 50%, var(--mint) 100%)">
-        <div class="absolute -top-20 -end-20 w-72 h-72 rounded-full opacity-35" style="background: var(--coral); filter: blur(80px)"></div>
-        <div class="absolute -bottom-24 -start-20 w-80 h-80 rounded-full opacity-20" style="background: var(--teal); filter: blur(90px)"></div>
 
-        <div class="relative flex flex-col items-center gap-[2.2vh] w-full max-w-xl">
-            <img src="{{ asset('images/logo.png') }}" alt="{{ t('app.name') }}"
-                 class="w-full max-w-[420px] max-h-[34vh] object-contain">
+    {{-- ==========================================
+         LEFT: FORM PANEL
+    =========================================== --}}
 
-            <div class="h-px w-16" style="background: var(--coral)"></div>
+    <section class="form-panel"
+             dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 
-            <h1 class="brand-serif text-2xl xl:text-3xl leading-snug font-semibold" style="color: var(--teal)">{{ t('auth.headline') }}</h1>
-            <p class="max-w-md text-sm text-slate-600 leading-relaxed">{{ t('auth.sub') }}</p>
+        {{-- Top bar --}}
 
-            <div class="hero-art h-[18vh] max-h-40 mt-1 opacity-95">
-                <svg viewBox="0 0 520 360" class="h-full w-auto" role="img" aria-label="Skincare products" xmlns="http://www.w3.org/2000/svg">
-                    {{-- soft backdrop --}}
-                    <circle cx="270" cy="190" r="150" fill="#EE7782" opacity=".10"/>
-                    <circle cx="270" cy="190" r="105" fill="#1A3F3F" opacity=".06"/>
-                    {{-- botanical leaves --}}
-                    <g opacity=".9">
-                        <path d="M470 330 C 440 270, 470 215, 520 200 C 520 255, 505 305, 470 330Z" fill="#1A3F3F" opacity=".14"/>
-                        <path d="M470 330 C 490 285, 500 250, 520 200" stroke="#1A3F3F" stroke-width="2" fill="none" opacity=".25"/>
-                        <path d="M30 335 C 10 285, 30 235, 75 222 C 80 270, 65 310, 30 335Z" fill="#EE7782" opacity=".25"/>
-                        <path d="M30 335 C 45 295, 55 262, 75 222" stroke="#EE7782" stroke-width="2" fill="none" opacity=".45"/>
-                    </g>
-                    <ellipse cx="260" cy="338" rx="232" ry="13" fill="#1A3F3F" opacity=".10"/>
+        <div class="topbar">
 
-                    {{-- tube --}}
-                    <g class="floaty-2" transform="rotate(-14 90 270)">
-                        <rect x="62" y="226" width="58" height="104" rx="10" fill="#EE7782"/>
-                        <rect x="64" y="316" width="54" height="14" rx="3" fill="#D95F6B"/>
-                        <rect x="74" y="198" width="34" height="32" rx="6" fill="#1A3F3F"/>
-                        <rect x="70" y="248" width="42" height="44" rx="6" fill="#fff" opacity=".92"/>
-                        <rect x="76" y="258" width="30" height="4" rx="2" fill="#1A3F3F" opacity=".7"/>
-                        <rect x="76" y="268" width="22" height="3" rx="1.5" fill="#1A3F3F" opacity=".35"/>
-                        <rect x="68" y="232" width="6" height="80" rx="3" fill="#fff" opacity=".25"/>
-                    </g>
+            <div class="brand-mark">DERMOVIVE</div>
 
-                    {{-- dropper serum bottle (hero) --}}
-                    <g class="floaty">
-                        <rect x="198" y="58" width="44" height="64" rx="20" fill="#EE7782"/>
-                        <rect x="190" y="118" width="60" height="24" rx="5" fill="#0F2A2A"/>
-                        <rect x="164" y="138" width="112" height="188" rx="20" fill="#1A3F3F"/>
-                        <rect x="180" y="188" width="80" height="102" rx="9" fill="#fff" opacity=".96"/>
-                        <circle cx="220" cy="212" r="9" fill="#EE7782"/>
-                        <path d="M214 212 q6 -10 12 0" stroke="#fff" stroke-width="2" fill="none"/>
-                        <rect x="194" y="232" width="52" height="5" rx="2.5" fill="#1A3F3F"/>
-                        <rect x="200" y="244" width="40" height="3.5" rx="1.75" fill="#1A3F3F" opacity=".45"/>
-                        <rect x="204" y="254" width="32" height="3.5" rx="1.75" fill="#1A3F3F" opacity=".3"/>
-                        <rect x="174" y="150" width="9" height="160" rx="4.5" fill="#fff" opacity=".14"/>
-                    </g>
+            <div class="lang" role="group" aria-label="Language">
 
-                    {{-- cream jar --}}
-                    <g class="floaty-2">
-                        <rect x="298" y="238" width="128" height="34" rx="8" fill="#EE7782"/>
-                        <rect x="304" y="232" width="116" height="10" rx="4" fill="#D95F6B"/>
-                        <rect x="302" y="270" width="120" height="58" rx="14" fill="#F8DDE0"/>
-                        <rect x="302" y="288" width="120" height="22" fill="#1A3F3F"/>
-                        <rect x="322" y="296" width="80" height="4" rx="2" fill="#fff" opacity=".85"/>
-                        <rect x="310" y="276" width="7" height="46" rx="3.5" fill="#fff" opacity=".5"/>
-                    </g>
-
-                    {{-- pump bottle (haircare) --}}
-                    <g class="floaty">
-                        <rect x="446" y="168" width="12" height="30" rx="3" fill="#1A3F3F"/>
-                        <rect x="436" y="160" width="40" height="11" rx="5.5" fill="#1A3F3F"/>
-                        <rect x="428" y="196" width="60" height="132" rx="13" fill="#F8DDE0"/>
-                        <rect x="436" y="236" width="44" height="62" rx="6" fill="#1A3F3F"/>
-                        <circle cx="458" cy="258" r="6" fill="#EE7782"/>
-                        <rect x="444" y="272" width="28" height="3" rx="1.5" fill="#fff" opacity=".85"/>
-                        <rect x="436" y="204" width="6" height="108" rx="3" fill="#fff" opacity=".55"/>
-                    </g>
-
-                    {{-- droplets --}}
-                    <path d="M222 28 c-9 13 -13 19 -13 26 a13 13 0 0 0 26 0 c0 -7 -4 -13 -13 -26z" fill="#EE7782" opacity=".85"/>
-                    <path d="M330 70 c-5 7 -7 10 -7 14 a7 7 0 0 0 14 0 c0 -4 -2 -7 -7 -14z" fill="#1A3F3F" opacity=".35"/>
-                </svg>
-            </div>
-        </div>
-
-        <div class="absolute bottom-4 text-xs text-slate-500">© {{ date('Y') }} {{ t('app.name') }}</div>
-    </section>
-
-    {{-- ============ SIGN-IN PANEL ============ --}}
-    <section class="flex flex-col px-6 py-4 sm:px-12 overflow-y-auto lg:overflow-visible" style="background: #FCFCFD">
-        <div class="flex items-center justify-between shrink-0">
-            <img src="{{ asset('images/logo.png') }}" alt="{{ t('app.name') }}" class="h-10 w-auto lg:invisible">
-            <div class="flex text-xs rounded overflow-hidden border border-slate-200 bg-white">
                 @foreach (['ar' => 'عربي', 'en' => 'EN', 'fr' => 'FR'] as $code => $label)
-                    <a href="{{ route('lang', $code) }}" class="px-3 py-1.5 transition {{ app()->getLocale() === $code ? 'text-white' : 'text-slate-500 hover:bg-slate-50' }}"
-                       @if (app()->getLocale() === $code) style="background: var(--teal)" @endif>{{ $label }}</a>
+
+                    <a href="{{ route('lang', $code) }}"
+                       @class(['active' => app()->getLocale() === $code])
+                       @if (app()->getLocale() === $code) aria-current="page" @endif>
+
+                        {{ $label }}
+
+                    </a>
+
                 @endforeach
+
             </div>
+
         </div>
 
-        <div class="flex-1 flex items-center justify-center py-4">
-            <div class="w-full max-w-sm">
-                <div class="mb-5">
-                    <h2 class="brand-serif text-2xl font-semibold" style="color: var(--teal)">{{ t('auth.welcome') }}</h2>
-                    <p class="mt-1 text-sm text-slate-500">{{ t('auth.welcome_sub') }}</p>
+
+        {{-- Form center --}}
+
+        <div class="form-center">
+
+            {{-- Eyebrow --}}
+            <div class="eyebrow">
+
+                {{ t('auth.welcome_sub') }}
+
+            </div>
+
+            {{-- Heading --}}
+            <h1 class="headline">
+
+                {{ t('auth.welcome') }}
+
+            </h1>
+
+            <p class="subhead">
+
+                {{ t('auth.sub') }}
+
+            </p>
+
+
+            {{-- Form --}}
+
+            <form wire:submit="login"
+                  x-data="{ show: false }"
+                  novalidate>
+
+
+                {{-- Email --}}
+
+                <div class="field">
+
+                    <label class="field-label" for="email">
+
+                        {{ t('common.email') }}
+
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        wire:model="email"
+                        class="field-input @error('email') error @enderror"
+                        autocomplete="username"
+                        autofocus
+                        placeholder="name@company.com"
+                    >
+
+                    @error('email')
+
+                        <p class="field-error">{{ $message }}</p>
+
+                    @enderror
+
                 </div>
 
-                <div class="bg-white border border-slate-200 rounded-md p-5 sm:p-6">
-                    <form wire:submit="login" class="space-y-4" x-data="{ show: false }">
-                        <x-field :label="t('common.email')" name="email">
-                            <input type="email" wire:model="email" class="input" autocomplete="username" autofocus placeholder="name@company.com">
-                        </x-field>
 
-                        <div>
-                            <div class="flex items-center justify-between">
-                                <label class="lbl">{{ t('auth.password') }}</label>
-                                <button type="button" class="text-xs font-medium" style="color: var(--coral)" @click="show = !show"
-                                        x-text="show ? '{{ t('auth.hide') }}' : '{{ t('auth.show') }}'"></button>
-                            </div>
-                            <input :type="show ? 'text' : 'password'" wire:model="password" class="input" autocomplete="current-password" placeholder="••••••••">
-                            @error('password')<p class="mt-1 text-xs text-red-600">{{ $message }}</p>@enderror
-                        </div>
+                {{-- Password --}}
 
-                        <label class="flex items-center gap-2 text-sm text-slate-600 select-none">
-                            <input type="checkbox" wire:model="remember" class="rounded border-slate-300"> {{ t('auth.remember') }}
-                        </label>
+                <div class="field">
 
-                        <button class="btn-brand w-full py-2.5 text-sm font-semibold inline-flex items-center justify-center gap-2 transition disabled:opacity-60" wire:loading.attr="disabled" wire:target="login">
-                            <svg wire:loading wire:target="login" class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" opacity=".3"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-                            {{ t('auth.submit') }}
+                    <div class="field-label">
+
+                        <label for="password">{{ t('auth.password') }}</label>
+
+                        <button type="button"
+                                class="link-btn"
+                                @click="show = !show"
+                                :aria-label="show ? '{{ t('auth.hide') }}' : '{{ t('auth.show') }}'"
+                                x-text="show
+                                    ? '{{ t('auth.hide') }}'
+                                    : '{{ t('auth.show') }}'">
                         </button>
-                    </form>
 
-                    @if (app()->isLocal())
-                        <div class="mt-4 rounded border p-2.5 text-xs" style="background: var(--blush); border-color: rgba(238,119,130,.35); color: var(--teal)">
-                            <div class="font-semibold mb-0.5">{{ t('auth.demo_creds') }}</div>
-                            <div class="num">admin@dermovive.demo &nbsp;·&nbsp; password</div>
-                        </div>
-                    @endif
+                    </div>
+
+                    <input
+                        id="password"
+                        :type="show ? 'text' : 'password'"
+                        wire:model="password"
+                        class="field-input @error('password') error @enderror"
+                        autocomplete="current-password"
+                        placeholder="••••••••"
+                    >
+
+                    @error('password')
+
+                        <p class="field-error">{{ $message }}</p>
+
+                    @enderror
+
                 </div>
 
-                <p class="mt-3 flex items-center justify-center gap-2 text-xs text-slate-400">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+
+                {{-- Remember --}}
+
+                <label class="remember">
+
+                    <input type="checkbox" wire:model="remember">
+
+                    {{ t('auth.remember') }}
+
+                </label>
+
+
+                {{-- Submit --}}
+
+                <button type="submit"
+                        class="btn-submit"
+                        wire:loading.attr="disabled"
+                        wire:target="login">
+
+                    <svg wire:loading
+                         wire:target="login"
+                         width="16"
+                         height="16"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         style="animation: spin 1s linear infinite;">
+
+                        <circle cx="12" cy="12" r="9"
+                                stroke="currentColor"
+                                stroke-width="3"
+                                opacity=".3"/>
+
+                        <path d="M21 12a9 9 0 00-9-9"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                    </svg>
+
+                    {{ t('auth.submit') }}
+
+                </button>
+
+                <style>
+                    @keyframes spin { to { transform: rotate(360deg); } }
+                </style>
+
+            </form>
+
+
+            {{-- Demo credentials --}}
+
+            @if (app()->isLocal())
+
+                <div class="demo">
+
+                    <div class="demo-title">{{ t('auth.demo_creds') }}</div>
+
+                    <div class="demo-code">
+                        admin@dermovive.demo · password
+                    </div>
+
+                </div>
+
+            @endif
+
+
+            {{-- Footer --}}
+
+            <div class="form-footer">
+
+                <div class="secure">
+
+                    <svg fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         viewBox="0 0 24 24">
+
+                        <rect x="5" y="11" width="14" height="9" rx="2"/>
+
+                        <path d="M8 11V8a4 4 0 018 0v3"/>
+
+                    </svg>
+
                     {{ t('auth.secure') }}
-                </p>
+
+                </div>
+
+                <div class="copyright">
+
+                    © {{ date('Y') }} {{ t('app.name') }}. {{ t('auth.rights') ?? 'All rights reserved.' }}
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
+
+
+    {{-- ==========================================
+         RIGHT: BRAND PANEL
+    =========================================== --}}
+
+    <aside class="brand-panel"
+           dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+
+        <div class="brand-grid"></div>
+
+        <div class="brand-card">
+
+            {{-- Logo --}}
+
+            <div class="brand-logo-wrap">
+
+                <img src="{{ asset('images/logo.png') }}"
+                     alt="{{ t('app.name') }}"
+                     class="brand-logo">
+
+            </div>
+
+
+            {{-- Divider --}}
+
+            <div class="brand-divider">
+
+                <span class="line-coral"></span>
+
+                <span class="dot dot-teal"></span>
+
+                <span class="dot dot-coral"></span>
+
+                <span class="dot dot-teal"></span>
+
+                <span class="line-teal"></span>
+
+            </div>
+
+
+            {{-- Headline --}}
+
+            <h2 class="brand-title serif">
+
+                {{ t('auth.headline') }}
+
+            </h2>
+
+
+            {{-- Description --}}
+
+            <p class="brand-desc">
+
+                {{ t('auth.sub') }}
+
+            </p>
+
+
+            {{-- Strip --}}
+
+            <div class="brand-strip">
+
+                <span></span>
+
+                <div class="badge">Est. 2025</div>
+
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        {{-- Footer --}}
+
+        <div class="brand-footer">
+
+            © {{ date('Y') }} {{ t('app.name') }}
+
+        </div>
+
+    </aside>
+
 </div>
